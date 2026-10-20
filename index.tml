@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Na.exe ★ Cosmic Archive</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;600;800&display=swap');
+
+:root {
+  --cyan: #72f5ff;
+  --pink: #ff70db;
+  --purple: #a58bff;
+  --bg: #080816;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: #f5f2ff;
+  background:
+    radial-gradient(ellipse at 15% 10%, #32205d 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 60%, #152c55 0%, transparent 40%),
+    var(--bg);
+  font-family: 'Space Mono', monospace;
+  overflow-x: hidden;
+}
+#stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+main, header, footer { position: relative; z-index: 1; }
+a { color: inherit; text-decoration: none; }
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 8%;
+  border-bottom: 1px solid #ffffff20;
+  background: #08081699;
+  backdrop-filter: blur(10px);
+}
+.logo {
+  color: var(--cyan);
+  font-family: Orbitron, sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+nav { display: flex; gap: 22px; flex-wrap: wrap; }
+nav a { font-size: 11px; color: #c7c4e4; }
+nav a:hover { color: var(--pink); }
+.wrap { max-width: 980px; margin: auto; padding: 0 24px; }
+.hero {
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 65px;
+  padding-bottom: 65px;
+}
+.eyebrow {
+  color: var(--cyan);
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+h1 {
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(43px, 9vw, 88px);
+  line-height: 1.1;
+  margin: 24px 0;
+  letter-spacing: -4px;
+}
+h1 span {
+  color: var(--pink);
+  text-shadow: 0 0 25px #ff70db70;
+}
+.subtitle { color: #c8c4e6; line-height: 1.9; max-width: 560px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 25px; }
+.btn {
+  display: inline-block;
+  padding: 12px 17px;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  font-size: 11px;
+  transition: .2s;
+}
+.btn:hover { background: var(--cyan); color: #080816; }
+.btn.pink { border-color: var(--pink); color: var(--pink); }
+.btn.pink:hover { background: var(--pink); color: #080816; }
+.planet {
+  position: absolute;
+  right: 8%;
+  top: 26%;
+  width: clamp(100px, 20vw, 190px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%, #fff 0%, #b5a7ff 5%, #7b61d8 20%, #34246f 52%, #100c30 75%);
+  box-shadow: inset -20px -12px 30px #03030d, 0 0 55px #a58bff40;
+  animation: float 5s ease-in-out infinite;
+}
+.planet::after {
+  content: "";
+  position: absolute;
+  width: 155%;
+  height: 30%;
+  border: 3px solid #72f5ff9c;
+  border-radius: 50%;
+  left: -27%;
+  top: 36%;
+  transform: rotate(-23deg);
+  box-shadow: 0 0 15px #72f5ff50;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-8deg); }
+  50% { transform: translateY(-18px) rotate(5deg); }
+}
+.section { padding: 65px 0; }
+.section-title {
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(22px, 4vw, 32px);
+  margin: 0 0 25px;
+}
+.section-title span { color: var(--cyan); }
+.panel {
+  background: linear-gradient(135deg, #17172dce, #101426b8);
+  border: 1px solid #a58bff50;
+  padding: 26px;
+  box-shadow: 5px 5px 0 #a58bff15;
+}
+.panel p { color: #cbc9e5; font-size: 13px; line-height: 2; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.tag {
+  display: inline-block;
+  color: var(--cyan);
+  border: 1px solid #72f5ff55;
+  padding: 6px 9px;
+  margin: 5px 4px 0 0;
+  font-size: 10px;
+}
+.stat { color: var(--pink); font-size: 25px; font-family: Orbitron,sans-serif; }
+.label { color: #9995bc; font-size: 10px; letter-spacing: 2px; }
+.music {
+  border-left: 3px solid var(--pink);
+  padding: 5px 0 5px 17px;
+  margin: 15px 0;
+}
+.music strong { color: #fff; }
+.music p { margin: 5px 0; }
+.quote {
+  text-align: center;
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(16px, 3vw, 25px);
+  color: var(--pink);
+  line-height: 1.8;
+  padding: 30px 0;
+}
+footer {
+  text-align: center;
+  border-top: 1px solid #ffffff20;
+  padding: 30px 16px;
+  color: #9290b0;
+  font-size: 10px;
+  line-height: 2;
+}
+@media(max-width: 600px) {
+  header { padding: 18px 5%; align-items: flex-start; }
+  nav { gap: 10px; justify-content: flex-end; }
+  nav a { font-size: 9px; }
+  .planet { right: 10%; top: 14%; opacity: .6; width: 100px; }
+  .hero { min-height: 75vh; padding-top: 110px; }
+  h1 { letter-spacing: -2px; }
+  .grid { grid-template-columns: 1fr; }
+  .panel { padding: 20px; }
+}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+
+<header>
+  <a class="logo" href="#">NA.EXE ★</a>
+  <nav>
+    <a href="#about">ABOUT</a>
+    <a href="#interests">INTERESTS</a>
+    <a href="#dreams">DREAMS</a>
+  </nav>
+</header>
+
+<main>
+<div class="wrap">
+  <section class="hero">
+    <div class="planet"></div>
+    <div class="eyebrow">✦ PERSONAL ARCHIVE / 001</div>
+    <h1>HELLO,<br>WORLD<span>_</span></h1>
+    <p class="subtitle">
+      Một linh hồn nhỏ bé đang lang thang giữa vũ trụ rộng lớn.
+      Welcome to my little corner of the internet.
+    </p>
+    <div class="actions">
+      <a class="btn" href="#about">[ EXPLORE MY WORLD ]</a>
+      <a class="btn pink" href="#dreams">[ MY NEXT MISSION ]</a>
+    </div>
+    <p class="label" style="margin-top:45px">SCROLL TO DISCOVER ↓</p>
+  </section>
+
+  <section class="section" id="about">
+    <div class="eyebrow">01 / IDENTITY FILE</div>
+    <h2 class="section-title">WHO IS <span>NA?</span></h2>
+    <div class="panel">
+      <div class="label">USER PROFILE // ONLINE</div>
+      <p>
+        Hi, tui là Na! Một người thích khám phá những điều mới,
+        yêu âm nhạc, nghệ thuật và những thế giới tồn tại trong trí tưởng tượng.
+        Tui vẫn đang tìm hiểu bản thân, thử những điều chưa từng làm
+        và viết tiếp câu chuyện của chính mình.
+      </p>
+      <span class="tag">DREAMER.exe</span>
+      <span class="tag">ART LOVER</span>
+      <span class="tag">WORK IN PROGRESS</span>
+      <span class="tag">LOST IN SPACE</span>
+    </div>
+  </section>
+
+  <section class="section" id="interests">
+    <div class="eyebrow">02 / FAVORITE THINGS</div>
+    <h2 class="section-title">MY <span>UNIVERSE</span></h2>
+    <div class="grid">
+      <div class="panel">
+        <div class="stat">01.</div>
+        <h3>♫ MUSIC</h3>
+        <p>K-pop, R&B, cloud rap và những bài nhạc khiến tui muốn nghe đi nghe lại.</p>
+      </div>
+      <div class="panel">
+        <div class="stat">02.</div>
+        <h3>✧ ART & DESIGN</h3>
+        <p>Vẽ vời, những cuốn sổ đầy hình ảnh, phong cách Y2K và các ý tưởng kỳ lạ.</p>
+      </div>
+      <div class="panel">
+        <div class="stat">03.</div>
+        <h3>☾ LITTLE THINGS</h3>
+        <p>Những cuộc trò chuyện thú vị, thế giới anime và các khoảnh khắc đáng nhớ.</p>
+      </div>
+      <div class="panel">
+        <div class="stat">04.</div>
+        <h3>⌘ CURIOSITY</h3>
+        <p>Công nghệ, ngôn ngữ mới, những nơi xa lạ và mọi thứ tui chưa biết.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="dreams">
+    <div class="eyebrow">03 / FUTURE TRANSMISSION</div>
+    <h2 class="section-title">MY NEXT <span>MISSION</span></h2>
+    <div class="panel">
+      <div class="music">
+        <strong>✦ LEVEL UP</strong>
+        <p>Trở thành phiên bản tốt hơn của chính mình, từng chút một.</p>
+      </div>
+      <div class="music">
+        <strong>✦ SEE THE WORLD</strong>
+        <p>Được đi thật nhiều nơi, trải nghiệm những nền văn hóa khác nhau.</p>
+      </div>
+      <div class="music">
+        <strong>✦ CREATE SOMETHING</strong>
+        <p>Tạo ra những thứ mang dấu ấn riêng và khiến tui tự hào.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="quote">
+    “somewhere between<br>
+    who I am & who I want to be.”
+  </div>
+
+  <section class="section">
+    <div class="panel" style="text-align:center">
+      <div class="eyebrow">END OF TRANSMISSION</div>
+      <h2 class="section-title">YOU FOUND <span>ME ★</span></h2>
+      <p>Cảm ơn vì đã ghé qua vũ trụ nhỏ này.</p>
+      <p style="color:var(--cyan)">Stay curious. Stay cosmic.</p>
+      <button class="btn" onclick="document.getElementById('message').textContent='SIGNAL RECEIVED ★ THANK YOU FOR BEING HERE!'">
+        SEND A LITTLE STAR ✦
+      </button>
+      <p id="message"></p>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  NA.EXE © 2026 — MADE IN MY LITTLE UNIVERSE<br>
+  <span style="color:#72f5ff">✦ 404: NORMALITY NOT FOUND ✦</span>
+</footer>
+
+<script>
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+let stars = [];
+function initStars() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = innerWidth * dpr;
+  canvas.height = innerHeight * dpr;
+  canvas.style.width = innerWidth + 'px';
+  canvas.style.height = innerHeight + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  stars = Array.from({length: 110}, () => ({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight,
+    r: Math.random() * 1.6 + .3,
+    a: Math.random(),
+    speed: Math.random() * .018 + .004
+  }));
+}
+function drawStars() {
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  for (const s of stars) {
+    s.a += s.speed;
+    const opacity = .25 + (Math.sin(s.a) + 1) * .35;
+    ctx.fillStyle = `rgba(180,225,255,${opacity})`;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  requestAnimationFrame(drawStars);
+}
+window.addEventListener('resize', initStars);
+initStars();
+drawStars();
+</script>
+</body>
+</html>

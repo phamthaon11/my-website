@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Milky Pixel ♡ Tea Shop</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+  --pink:#ffb9df;
+  --purple:#c7b3ff;
+  --cream:#fff6e9;
+  --ink:#292653;
+  --blue:#a8e8ff;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:#171a43;
+  color:var(--ink);
+  font-family:'VT323',monospace;
+  font-size:21px;
+  background-image:
+    radial-gradient(#ffffff55 1px,transparent 1px);
+  background-size:25px 25px;
+}
+button { font:inherit; cursor:pointer; }
+header {
+  background:var(--pink);
+  border-bottom:4px solid var(--ink);
+  padding:16px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.logo {
+  font-family:'Press Start 2P',monospace;
+  font-size:13px;
+  line-height:1.8;
+}
+nav { display:flex; gap:15px; flex-wrap:wrap; }
+nav a { color:var(--ink); text-decoration:none; }
+nav a:hover { color:#9a3c99; }
+.hero {
+  text-align:center;
+  color:white;
+  padding:45px 16px 35px;
+}
+.hero h1 {
+  font-family:'Press Start 2P',monospace;
+  font-size:clamp(20px,4vw,38px);
+  line-height:1.7;
+  color:var(--pink);
+  text-shadow:4px 4px 0 #7452b5;
+}
+.hero p { font-size:27px; }
+.pixel-cup {
+  font-size:70px;
+  display:inline-block;
+  filter:drop-shadow(4px 4px 0 #8a75c9);
+  animation:bob 2s steps(4) infinite;
+}
+@keyframes bob {
+  50% { transform:translateY(-8px); }
+}
+.container {
+  max-width:1100px;
+  margin:auto;
+  padding:16px;
+}
+.shop-info {
+  background:var(--cream);
+  border:4px solid var(--purple);
+  box-shadow:6px 6px 0 #080b2b;
+  padding:18px;
+  margin-bottom:28px;
+  text-align:center;
+}
+.shop-info p { margin:8px; }
+h2 {
+  font-family:'Press Start 2P',monospace;
+  font-size:clamp(15px,3vw,23px);
+  line-height:1.8;
+}
+.section-head {
+  background:var(--purple);
+  border:4px solid var(--ink);
+  padding:12px 18px;
+  margin-bottom:16px;
+}
+.filters {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.filter {
+  padding:8px 13px;
+  background:var(--cream);
+  color:var(--ink);
+  border:3px solid var(--purple);
+  box-shadow:3px 3px 0 var(--ink);
+}
+.filter.active,.filter:hover {
+  background:var(--pink);
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+.card {
+  background:var(--cream);
+  border:4px solid var(--purple);
+  box-shadow:5px 5px 0 var(--ink);
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.drink-art {
+  background:#f7dafa;
+  border:3px dashed #b09ae8;
+  text-align:center;
+  padding:14px 4px;
+  font-size:64px;
+}
+.card h3 {
+  font-size:27px;
+  margin:14px 0 6px;
+}
+.desc { color:#74688c; margin:0 0 10px; }
+.price {
+  font-family:'Press Start 2P',monospace;
+  font-size:13px;
+  color:#a34691;
+  margin:8px 0 14px;
+}
+.add {
+  margin-top:auto;
+  background:var(--pink);
+  border:3px solid var(--ink);
+  padding:10px 6px;
+  box-shadow:3px 3px 0 var(--ink);
+}
+.add:hover { transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink); }
+.cart {
+  margin:35px 0;
+  background:var(--blue);
+  border:4px solid var(--ink);
+  box-shadow:6px 6px 0 var(--purple);
+  padding:20px;
+}
+.cart h2 { margin-top:0; }
+.cart-row {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  border-bottom:2px dashed #7e8cc0;
+  padding:8px 0;
+}
+.qty button {
+  border:2px solid var(--ink);
+  background:white;
+  padding:0 8px;
+}
+.total {
+  font-family:'Press Start 2P',monospace;
+  font-size:15px;
+  line-height:2;
+  margin-top:18px;
+}
+.checkout {
+  width:100%;
+  margin-top:12px;
+  padding:13px;
+  border:3px solid var(--ink);
+  background:#b9f0c3;
+  box-shadow:4px 4px 0 var(--ink);
+}
+.promo {
+  background:var(--pink);
+  border:4px dashed var(--ink);
+  padding:20px;
+  text-align:center;
+  line-height:1.5;
+}
+footer {
+  margin-top:35px;
+  background:var(--purple);
+  border-top:4px solid var(--ink);
+  padding:24px;
+  text-align:center;
+}
+.small { font-size:17px; }
+[hidden] { display:none !important; }
+@media(max-width:720px) {
+  .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .logo { font-size:10px; }
+  nav { gap:10px; }
+  .card { padding:10px; }
+  .drink-art { font-size:48px; }
+  .price { font-size:11px; }
+}
+@media(max-width:430px) {
+  .grid { grid-template-columns:1fr 1fr; }
+  .card h3 { font-size:23px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🧋 MILKY PIXEL ★</div>
+  <nav>
+    <a href="#home">HOME</a>
+    <a href="#menu">MENU</a>
+    <a href="#about">ABOUT</a>
+    <a href="#cart">CART 🛒 <span id="count">0</span></a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="pixel-cup">🧋</div>
+  <h1>MILKY PIXEL</h1>
+  <p>♡ Một ly trà, ngàn cảm xúc ♡</p>
+  <p class="small">[ WELCOME TO OUR LITTLE TEA WORLD! ]</p>
+</section>
+
+<main class="container">
+  <section class="shop-info" id="about">
+    <h2>★ PLAYER 1: YOU ★</h2>
+    <p>Chào mừng đến tiệm trà sữa pixel!</p>
+    <p>Chọn món yêu thích, thêm topping và tạo đơn hàng của bạn.</p>
+    <p>♡ Made with milk, tea & love ♡</p>
+  </section>
+
+  <section id="menu">
+    <div class="section-head">
+      <h2>✦ OUR MENU ✦</h2>
+      <div>Choose your potion!</div>
+    </div>
+    <div class="filters">
+      <button class="filter active" data-filter="all">ALL</button>
+      <button class="filter" data-filter="milk">🧋 Trà sữa</button>
+      <button class="filter" data-filter="fruit">🍓 Trà trái cây</button>
+      <button class="filter" data-filter="special">⭐ Đặc biệt</button>
+      <button class="filter" data-filter="topping">🍮 Topping</button>
+    </div>
+    <div class="grid" id="products"></div>
+  </section>
+
+  <section class="cart" id="cart">
+    <h2>🛒 YOUR INVENTORY</h2>
+    <div id="cart-items">Chưa có món nào nè! Thêm một ly đi ♡</div>
+    <div class="total">TOTAL: <span id="total">0</span>đ</div>
+    <button class="checkout" onclick="checkout()">✧ TẠO ĐƠN HÀNG ✧</button>
+    <p class="small" id="notice">Đây là menu demo, chưa kết nối thanh toán.</p>
+  </section>
+
+  <section class="promo">
+    <h2>🎁 DAILY QUEST</h2>
+    <p>MUA 3 TẶNG 1</p>
+    <p>Áp dụng cho các món trà sữa và trà trái cây.</p>
+    <p class="small">* Ưu đãi minh họa cho website demo.</p>
+  </section>
+</main>
+
+<footer>
+  <h2>THANK YOU FOR VISITING! ♡</h2>
+  <p>Milky Pixel Tea Shop ★ Est. 2026</p>
+  <p class="small">Made with ♡ and a little bit of magic.</p>
+</footer>
+
+<script>
+const products = [
+  {id:1,name:"Trà sữa truyền thống",price:30000,emoji:"🧋",cat:"milk",desc:"Classic milk tea"},
+  {id:2,name:"Trà sữa matcha",price:35000,emoji:"🍵",cat:"milk",desc:"Matcha dream"},
+  {id:3,name:"Trà sữa dâu",price:34000,emoji:"🍓",cat:"milk",desc:"Strawberry cloud"},
+  {id:4,name:"Trà sữa socola",price:32000,emoji:"🍫",cat:"milk",desc:"Choco universe"},
+  {id:5,name:"Trà đào cam sả",price:35000,emoji:"🍑",cat:"fruit",desc:"Peachy sunshine"},
+  {id:6,name:"Trà vải",price:33000,emoji:"🍈",cat:"fruit",desc:"Lychee breeze"},
+  {id:7,name:"Trà xoài",price:34000,emoji:"🥭",cat:"fruit",desc:"Mango planet"},
+  {id:8,name:"Trà dâu tây",price:34000,emoji:"🍓",cat:"fruit",desc:"Berry galaxy"},
+  {id:9,name:"Trà sữa kem cheese",price:42000,emoji:"🥤",cat:"special",desc:"Cheese nebula"},
+  {id:10,name:"Matcha kem cheese",price:45000,emoji:"🍵",cat:"special",desc:"Green moon"},
+  {id:11,name:"Trân châu đen",price:5000,emoji:"⚫",cat:"topping",desc:"Classic pearls"},
+  {id:12,name:"Pudding trứng",price:7000,emoji:"🍮",cat:"topping",desc:"Soft pudding"},
+  {id:13,name:"Thạch trái cây",price:5000,emoji:"💎",cat:"topping",desc:"Jelly gems"},
+  {id:14,name:"Kem cheese",price:10000,emoji:"🍦",cat:"topping",desc:"Cheese cloud"}
+];
+let cart = {};
+let activeFilter = "all";
+const money = n => n.toLocaleString("vi-VN");
+
+function renderProducts(){
+  const list = products.filter(p =>
+    activeFilter === "all" || p.cat === activeFilter
+  );
+  document.getElementById("products").innerHTML = list.map(p => `
+    <article class="card">
+      <div class="drink-art">${p.emoji}</div>
+      <h3>${p.name}</h3>
+      <p class="desc">${p.desc}</p>
+      <div class="price">${money(p.price)}đ</div>
+      <button class="add" onclick="addItem(${p.id})">＋ THÊM MÓN</button>
+    </article>
+  `).join("");
+}
+function addItem(id){
+  cart[id] = (cart[id] || 0) + 1;
+  renderCart();
+}
+function changeQty(id,delta){
+  cart[id] = (cart[id] || 0) + delta;
+  if(cart[id] <= 0) delete cart[id];
+  renderCart();
+}
+function renderCart(){
+  const entries = Object.entries(cart);
+  document.getElementById("count").textContent =
+    entries.reduce((sum,[id,q]) => sum + q,0);
+  document.getElementById("cart-items").innerHTML = entries.length
+    ? entries.map(([id,q]) => {
+        const p = products.find(x => x.id === Number(id));
+        return `<div class="cart-row">
+          <span>${p.emoji} ${p.name}<br>${money(p.price*q)}đ</span>
+          <span class="qty">
+            <button onclick="changeQty(${id},-1)">−</button>
+            ${q}
+            <button onclick="changeQty(${id},1)">＋</button>
+          </span>
+        </div>`;
+      }).join("")
+    : "Chưa có món nào nè! Thêm một ly đi ♡";
+  const total = entries.reduce((sum,[id,q]) =>
+    sum + products.find(p=>p.id===Number(id)).price*q,0);
+  document.getElementById("total").textContent = money(total);
+}
+document.querySelectorAll(".filter").forEach(btn => {
+  btn.addEventListener("click",()=>{
+    activeFilter = btn.dataset.filter;
+    document.querySelectorAll(".filter").forEach(b =>
+      b.classList.toggle("active",b===btn));
+    renderProducts();
+  });
+});
+function checkout(){
+  if(!Object.keys(cart).length){
+    document.getElementById("notice").textContent =
+      "Bạn chưa chọn món nào hết á! 🧋";
+    return;
+  }
+  let lines = products.filter(p=>cart[p.id]).map(p =>
+    `${p.name} x ${cart[p.id]}: ${money(p.price*cart[p.id])}đ`);
+  let total = products.reduce((s,p)=>s+p.price*(cart[p.id]||0),0);
+  document.getElementById("notice").textContent =
+    "ĐƠN DEMO: " + lines.join(" | ") + " | TỔNG: " + money(total) +
+    "đ. Muốn đặt thật, hãy liên hệ cửa hàng!";
+}
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
